@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://dadqwqxgucfmq"]
+
+[ext_resource type="PackedScene" uid="uid://dwnwk23a7iae5" path="res://character_editor_UI.tscn" id="1_2uq1f"]
+[ext_resource type="PackedScene" uid="uid://b0ktewdsktla6" path="res://CharacterFull.tscn" id="1_bo8dh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsgm8"]
+albedo_color = Color(0.121569, 0.133333, 0.141176, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sm1mk"]
+size = Vector2(20, 5)
+
+[sub_resource type="Environment" id="Environment_i4aj5"]
+background_mode = 1
+background_color = Color(0.682353, 0.721569, 0.835294, 1)
+ambient_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Character Editor" parent="." instance=ExtResource("1_2uq1f")]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 1.445)
+current = true
+fov = 58.0
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+visible = false
+material_override = SubResource("StandardMaterial3D_xsgm8")
+mesh = SubResource("PlaneMesh_sm1mk")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, -2)
+visible = false
+material_override = SubResource("StandardMaterial3D_xsgm8")
+mesh = SubResource("PlaneMesh_sm1mk")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_i4aj5")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2, 6)
+light_energy = 7.924
+spot_range = 10.0
+spot_angle = 14.2497
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="World"]
+transform = Transform3D(0.5, 0.150384, -0.852869, 0, 0.984808, 0.173648, 0.866025, -0.0868241, 0.492404, -6.70574, 2.3473, 2.98481)
+light_energy = 7.924
+spot_range = 10.0
+spot_angle = 14.2497
+
+[node name="CharacterCreationDemo" parent="." instance=ExtResource("1_bo8dh")]
+transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, -1)
+
+[node name="Skeleton3D" parent="CharacterCreationDemo/metarig" index="2"]
+bones/1/rotation = Quaternion(0.175564, 4.5424e-14, 4.18577e-08, 0.984468)
+bones/2/rotation = Quaternion(0.244931, -4.34641e-15, 5.83961e-08, 0.96954)
+bones/3/rotation = Quaternion(0.209544, -1.16563e-07, 2.49796e-08, 0.977799)
+bones/4/rotation = Quaternion(0.453173, 1.06266e-07, 5.40224e-08, 0.891423)
+bones/6/rotation = Quaternion(-0.823868, -6.75656e-08, -9.82127e-08, 0.566781)
+bones/8/rotation = Quaternion(0.302988, 0.727991, 0.172962, 0.590179)
+bones/10/rotation = Quaternion(0.155045, -0.773133, -0.0544241, 0.612589)
+bones/15/rotation = Quaternion(-0.958797, -0.00870154, -0.00329579, 0.28394)
+bones/16/rotation = Quaternion(0.986178, -0.002803, -0.000150831, 0.165668)
+
+[node name="CakePants02" parent="CharacterCreationDemo/metarig/Skeleton3D" index="1"]
+visible = false
+
+[node name="Pants01" parent="CharacterCreationDemo/metarig/Skeleton3D" index="3"]
+visible = false
+
+[node name="Pants02" parent="CharacterCreationDemo/metarig/Skeleton3D" index="4"]
+visible = false
+
+[node name="CharacterCakeless" parent="CharacterCreationDemo/metarig/Skeleton3D" index="5"]
+visible = false
+
+[node name="Hair01" parent="CharacterCreationDemo/metarig/Skeleton3D" index="6"]
+visible = false
+
+[node name="AnimationPlayer" parent="CharacterCreationDemo" index="1"]
+autoplay = "Lil Dance"
+
+[editable path="CharacterCreationDemo"]
