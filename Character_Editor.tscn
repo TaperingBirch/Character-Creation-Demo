@@ -706,7 +706,6 @@ skeleton = NodePath("../..")
 [node name="Body" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
 
 [node name="Body01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
-visible = false
 material_override = ExtResource("5_yrk6w")
 mesh = SubResource("ArrayMesh_2ns0u")
 skin = SubResource("Skin_nyymf")
@@ -728,6 +727,7 @@ skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
 [node name="Body02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
+visible = false
 material_override = ExtResource("5_yrk6w")
 mesh = SubResource("ArrayMesh_q53jw")
 skin = SubResource("Skin_nyymf")
