@@ -71,7 +71,7 @@ func _on_pants_button_right_pressed():
 
 func _on_body_button_left_pressed():
 	var body_children := body_parent.get_children()
-	var body_node: MeshInstance3D
+	var body_node: Node
 	iterate_item_left(body_children, body_label)
 	for n in body_children:
 		if n.visible:
@@ -79,7 +79,7 @@ func _on_body_button_left_pressed():
 
 func _on_body_button_right_pressed():
 	var body_children := body_parent.get_children()
-	var body_node: MeshInstance3D
+	var body_node: Node
 	iterate_item_right(body_children, body_label)
 	for n in body_children:
 		if n.visible:

@@ -515,14 +515,14 @@ _data = {
 
 [node name="Character Editor" parent="." instance=ExtResource("1_2uq1f")]
 
-[node name="Label" parent="Character Editor/VBoxContainer/Body" index="1"]
-text = "Needs to be set!"
+[node name="Label" parent="Character Editor/VBoxContainer/Body" index="2"]
+text = "ERROR"
 
-[node name="Label" parent="Character Editor/VBoxContainer/Hair" index="1"]
-text = "Also needs to be set!"
+[node name="Label" parent="Character Editor/VBoxContainer/Hair" index="2"]
+text = "ERROR"
 
-[node name="Label" parent="Character Editor/VBoxContainer/Pants" index="1"]
-text = "This as well!"
+[node name="Label" parent="Character Editor/VBoxContainer/Pants" index="2"]
+text = "ERROR"
 
 [node name="World" type="Node3D" parent="."]
 
@@ -690,7 +690,10 @@ bones/16/scale = Vector3(0.999996, 1, 0.999999)
 
 [node name="Hair" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
 
+[node name="Hair00" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Hair"]
+
 [node name="Hair01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Hair"]
+visible = false
 material_override = ExtResource("6_8hhma")
 mesh = SubResource("ArrayMesh_tn8gi")
 skin = SubResource("Skin_nyymf")

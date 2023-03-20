@@ -29,6 +29,13 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 text = "<"
 
+[node name="Body" type="Label" parent="VBoxContainer/Body"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_o43kn")
+text = "Body"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="VBoxContainer/Body"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
@@ -54,6 +61,13 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 text = "<"
 
+[node name="Hair" type="Label" parent="VBoxContainer/Hair"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_o43kn")
+text = "Hair"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="VBoxContainer/Hair"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
@@ -78,6 +92,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 text = "<"
+
+[node name="Pants" type="Label" parent="VBoxContainer/Pants"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = ExtResource("1_o43kn")
+text = "Pants
+"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Pants"]
 custom_minimum_size = Vector2(400, 0)
