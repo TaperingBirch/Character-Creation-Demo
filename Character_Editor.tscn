@@ -515,8 +515,14 @@ _data = {
 
 [node name="Character Editor" parent="." instance=ExtResource("1_2uq1f")]
 
+[node name="Label" parent="Character Editor/VBoxContainer/Body" index="1"]
+text = "Needs to be set!"
+
 [node name="Label" parent="Character Editor/VBoxContainer/Hair" index="1"]
-text = "Hair01"
+text = "Also needs to be set!"
+
+[node name="Label" parent="Character Editor/VBoxContainer/Pants" index="1"]
+text = "This as well!"
 
 [node name="World" type="Node3D" parent="."]
 
@@ -697,48 +703,45 @@ mesh = SubResource("ArrayMesh_f14y5")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Cakeless" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
+[node name="Body" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
 
-[node name="CharacterCakeless" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakeless"]
+[node name="Body01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
 visible = false
 material_override = ExtResource("5_yrk6w")
 mesh = SubResource("ArrayMesh_2ns0u")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakeless/CharacterCakeless"]
+[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01"]
 
-[node name="Pants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakeless/CharacterCakeless/Pants"]
-visible = false
+[node name="Pants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01/Pants"]
 material_override = ExtResource("4_rky4j")
 mesh = SubResource("ArrayMesh_oqt5f")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Pants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakeless/CharacterCakeless/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01/Pants"]
 visible = false
 material_override = ExtResource("4_rky4j")
 mesh = SubResource("ArrayMesh_3wc3o")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Cakefull" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
-
-[node name="CharacterCake" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakefull"]
+[node name="Body02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
 material_override = ExtResource("5_yrk6w")
 mesh = SubResource("ArrayMesh_q53jw")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakefull/CharacterCake"]
+[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02"]
 
-[node name="CakePants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakefull/CharacterCake/Pants"]
+[node name="Pants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02/Pants"]
 material_override = ExtResource("4_rky4j")
 mesh = SubResource("ArrayMesh_6dny7")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="CakePants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Cakefull/CharacterCake/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02/Pants"]
 visible = false
 material_override = ExtResource("4_rky4j")
 mesh = SubResource("ArrayMesh_63im4")
@@ -751,10 +754,14 @@ libraries = {
 "": SubResource("AnimationLibrary_ipwo0")
 }
 
+[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Left" to="CharacterEditorManager" method="_on_body_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Body/Body Color" to="CharacterEditorManager" method="_on_body_color_color_changed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Right" to="CharacterEditorManager" method="_on_body_button_right_pressed"]
 [connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Left" to="CharacterEditorManager" method="_on_hair_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Hair/Hair Color" to="CharacterEditorManager" method="_on_hair_color_color_changed"]
 [connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Right" to="CharacterEditorManager" method="_on_hair_button_right_pressed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Left" to="CharacterEditorManager" method="_on_pants_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Pants/Pants Color" to="CharacterEditorManager" method="_on_pants_color_color_changed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Right" to="CharacterEditorManager" method="_on_pants_button_right_pressed"]
 
 [editable path="Character Editor"]
