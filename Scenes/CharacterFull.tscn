@@ -1,24 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dadqwqxgucfmq"]
+[gd_scene load_steps=19 format=3 uid="uid://b0ktewdsktla6"]
 
-[ext_resource type="PackedScene" uid="uid://dwnwk23a7iae5" path="res://character_editor_UI.tscn" id="1_2uq1f"]
-[ext_resource type="Script" path="res://Editor.gd" id="2_3ubhr"]
-[ext_resource type="Material" uid="uid://bijh4bumtinlk" path="res://Materials/Pants_Material.tres" id="4_rky4j"]
-[ext_resource type="Material" uid="uid://dc4q7q8qqp2an" path="res://Materials/Body_Material.tres" id="5_yrk6w"]
-[ext_resource type="Material" uid="uid://bo4jmjob5d3wq" path="res://Materials/Hair_Material.tres" id="6_8hhma"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsgm8"]
-albedo_color = Color(0.121569, 0.133333, 0.141176, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_sm1mk"]
-size = Vector2(20, 5)
-
-[sub_resource type="Environment" id="Environment_i4aj5"]
-background_mode = 1
-background_color = Color(0.682353, 0.721569, 0.835294, 1)
-ambient_light_source = 2
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
+[ext_resource type="Material" uid="uid://bo4jmjob5d3wq" path="res://Materials/Hair_Material.tres" id="1_fhu4t"]
+[ext_resource type="Material" uid="uid://dc4q7q8qqp2an" path="res://Materials/Body_Material.tres" id="2_eths0"]
+[ext_resource type="Material" uid="uid://bijh4bumtinlk" path="res://Materials/Pants_Material.tres" id="3_kh1f6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwktx"]
 resource_name = "Material.001"
@@ -511,63 +495,12 @@ _data = {
 "Root003|Root|0Targeting Pose": SubResource("Animation_ji43n")
 }
 
-[node name="Node3D" type="Node3D"]
-
-[node name="Character Editor" parent="." instance=ExtResource("1_2uq1f")]
-
-[node name="Label" parent="Character Editor/VBoxContainer/Body" index="2"]
-text = "ERROR"
-
-[node name="Label" parent="Character Editor/VBoxContainer/Hair" index="2"]
-text = "ERROR"
-
-[node name="Label" parent="Character Editor/VBoxContainer/Pants" index="2"]
-text = "ERROR"
-
-[node name="World" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 1.445)
-current = true
-fov = 58.0
-
-[node name="Floor" type="MeshInstance3D" parent="World"]
-visible = false
-material_override = SubResource("StandardMaterial3D_xsgm8")
-mesh = SubResource("PlaneMesh_sm1mk")
-skeleton = NodePath("../..")
-
-[node name="Wall" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, -2)
-visible = false
-material_override = SubResource("StandardMaterial3D_xsgm8")
-mesh = SubResource("PlaneMesh_sm1mk")
-skeleton = NodePath("../..")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
-environment = SubResource("Environment_i4aj5")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2, 6)
-light_energy = 7.924
-spot_range = 10.0
-spot_angle = 14.2497
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="World"]
-transform = Transform3D(0.5, 0.150384, -0.852869, 0, 0.984808, 0.173648, 0.866025, -0.0868241, 0.492404, -6.70574, 2.3473, 2.98481)
-light_energy = 7.924
-spot_range = 10.0
-spot_angle = 14.2497
-
-[node name="CharacterEditorManager" type="Node3D" parent="."]
-script = ExtResource("2_3ubhr")
-
-[node name="CharacterCreationDemo" type="Node3D" parent="CharacterEditorManager"]
+[node name="CharacterCreationDemo" type="Node3D"]
 transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, -1)
 
-[node name="metarig" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo"]
+[node name="metarig" type="Node3D" parent="."]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig"]
+[node name="Skeleton3D" type="Skeleton3D" parent="metarig"]
 bones/0/name = "spine"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, -5.32907e-15, 2.38418e-07, -3.16516e-08, 0.991149, 0.132757, -2.36308e-07, -0.132757, 0.991149, 0, 0.936156, 0.0205878)
@@ -688,83 +621,71 @@ bones/16/position = Vector3(-0.137288, -0.0954085, 0.00218385)
 bones/16/rotation = Quaternion(0.986178, -0.002803, -0.000150831, 0.165668)
 bones/16/scale = Vector3(0.999996, 1, 0.999999)
 
-[node name="Hair" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
+[node name="Hair" type="Node3D" parent="metarig/Skeleton3D"]
 
-[node name="Hair00" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Hair"]
+[node name="Hair00" type="Node3D" parent="metarig/Skeleton3D/Hair"]
 
-[node name="Hair01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Hair"]
+[node name="Hair01" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
 visible = false
-material_override = ExtResource("6_8hhma")
+material_override = ExtResource("1_fhu4t")
 mesh = SubResource("ArrayMesh_tn8gi")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Hair02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Hair"]
+[node name="Hair02" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
 visible = false
-material_override = ExtResource("6_8hhma")
+material_override = ExtResource("1_fhu4t")
 mesh = SubResource("ArrayMesh_f14y5")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Body" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D"]
+[node name="Body" type="Node3D" parent="metarig/Skeleton3D"]
 
-[node name="Body01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
-material_override = ExtResource("5_yrk6w")
+[node name="Body01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body"]
+material_override = ExtResource("2_eths0")
 mesh = SubResource("ArrayMesh_2ns0u")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01"]
+[node name="Pants" type="Node3D" parent="metarig/Skeleton3D/Body/Body01"]
 
-[node name="Pants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01/Pants"]
-material_override = ExtResource("4_rky4j")
+[node name="Pants01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
+material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_oqt5f")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Pants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body01/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
 visible = false
-material_override = ExtResource("4_rky4j")
+material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_3wc3o")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Body02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body"]
+[node name="Body02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body"]
 visible = false
-material_override = ExtResource("5_yrk6w")
+material_override = ExtResource("2_eths0")
 mesh = SubResource("ArrayMesh_q53jw")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Pants" type="Node3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02"]
+[node name="Pants" type="Node3D" parent="metarig/Skeleton3D/Body/Body02"]
 
-[node name="Pants01" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02/Pants"]
-material_override = ExtResource("4_rky4j")
+[node name="Pants01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
+material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_6dny7")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Pants02" type="MeshInstance3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig/Skeleton3D/Body/Body02/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
 visible = false
-material_override = ExtResource("4_rky4j")
+material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_63im4")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterEditorManager/CharacterCreationDemo"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Lil Dance"
 libraries = {
 "": SubResource("AnimationLibrary_ipwo0")
 }
-
-[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Left" to="CharacterEditorManager" method="_on_body_button_left_pressed"]
-[connection signal="color_changed" from="Character Editor/VBoxContainer/Body/Body Color" to="CharacterEditorManager" method="_on_body_color_color_changed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Right" to="CharacterEditorManager" method="_on_body_button_right_pressed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Left" to="CharacterEditorManager" method="_on_hair_button_left_pressed"]
-[connection signal="color_changed" from="Character Editor/VBoxContainer/Hair/Hair Color" to="CharacterEditorManager" method="_on_hair_color_color_changed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Right" to="CharacterEditorManager" method="_on_hair_button_right_pressed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Left" to="CharacterEditorManager" method="_on_pants_button_left_pressed"]
-[connection signal="color_changed" from="Character Editor/VBoxContainer/Pants/Pants Color" to="CharacterEditorManager" method="_on_pants_color_color_changed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Right" to="CharacterEditorManager" method="_on_pants_button_right_pressed"]
-
-[editable path="Character Editor"]

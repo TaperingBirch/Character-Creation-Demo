@@ -17,6 +17,10 @@ var pants_material: StandardMaterial3D = load("res://Materials/Pants_Material.tr
 var pants_parent_name: String = "Pants"
 var pants_parent_list: Array[Node]
 
+@onready var skeleton: Skeleton3D = $CharacterCreationDemo/metarig/Skeleton3D
+@onready var character_node: Node3D = $CharacterCreationDemo
+
+var character_scene := "res://Scenes/Character.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -87,6 +91,12 @@ func _on_body_button_right_pressed():
 	update_dependent_item(body_node.get_children(), "Pants", pants_label.text)
 
 
+func _on_save__exit_pressed():
+	shrink(skeleton)
+	save()
+
+
+
 func reset_color_picker(color_picker:ColorPickerButton, color:Color):
 	color_picker.color = color
 
@@ -147,3 +157,16 @@ func update_dependent_item(children:Array[Node], item_category:String, item_name
 					item_siblings[i].show()
 				elif item_siblings[i].get_name() != item_name && item_siblings[i].visible:
 					item_siblings[i].hide()
+
+
+func shrink(parent:Node):
+	var roots := parent.get_children()
+	for i in roots:
+		if !i.visible:
+			print("{0} freed".format([i.get_name()]))
+			i.free()
+		elif i.get_children().size() > 0:
+			shrink(i)
+
+func save():
+	pass

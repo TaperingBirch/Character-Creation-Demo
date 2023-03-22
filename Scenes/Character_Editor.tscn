@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb650s78ugikk"]
+
+[ext_resource type="PackedScene" uid="uid://dwnwk23a7iae5" path="res://Scenes/character_editor_UI.tscn" id="1_pe1jc"]
+[ext_resource type="Script" path="res://Scripts/Editor.gd" id="2_ej6uk"]
+[ext_resource type="PackedScene" uid="uid://b0ktewdsktla6" path="res://Scenes/CharacterFull.tscn" id="3_3maqc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsgm8"]
+albedo_color = Color(0.121569, 0.133333, 0.141176, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sm1mk"]
+size = Vector2(20, 5)
+
+[sub_resource type="Environment" id="Environment_i4aj5"]
+background_mode = 1
+background_color = Color(0.682353, 0.721569, 0.835294, 1)
+ambient_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Character Editor" parent="." instance=ExtResource("1_pe1jc")]
+
+[node name="Label" parent="Character Editor/VBoxContainer/Body" index="2"]
+text = "ERROR"
+
+[node name="Label" parent="Character Editor/VBoxContainer/Hair" index="2"]
+text = "ERROR"
+
+[node name="Label" parent="Character Editor/VBoxContainer/Pants" index="2"]
+text = "ERROR"
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 1.445)
+current = true
+fov = 58.0
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+visible = false
+material_override = SubResource("StandardMaterial3D_xsgm8")
+mesh = SubResource("PlaneMesh_sm1mk")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, -2)
+visible = false
+material_override = SubResource("StandardMaterial3D_xsgm8")
+mesh = SubResource("PlaneMesh_sm1mk")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_i4aj5")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 2, 6)
+light_energy = 7.924
+spot_range = 10.0
+spot_angle = 14.2497
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="World"]
+transform = Transform3D(0.5, 0.150384, -0.852869, 0, 0.984808, 0.173648, 0.866025, -0.0868241, 0.492404, -6.70574, 2.3473, 2.98481)
+light_energy = 7.924
+spot_range = 10.0
+spot_angle = 14.2497
+
+[node name="CharacterEditorManager" type="Node3D" parent="."]
+script = ExtResource("2_ej6uk")
+
+[node name="CharacterCreationDemo" parent="CharacterEditorManager" instance=ExtResource("3_3maqc")]
+
+[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Left" to="CharacterEditorManager" method="_on_body_button_left_pressed"]
+[connection signal="color_changed" from="Character Editor/VBoxContainer/Body/Body Color" to="CharacterEditorManager" method="_on_body_color_color_changed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Right" to="CharacterEditorManager" method="_on_body_button_right_pressed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Left" to="CharacterEditorManager" method="_on_hair_button_left_pressed"]
+[connection signal="color_changed" from="Character Editor/VBoxContainer/Hair/Hair Color" to="CharacterEditorManager" method="_on_hair_color_color_changed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Hair/Hair Button Right" to="CharacterEditorManager" method="_on_hair_button_right_pressed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Left" to="CharacterEditorManager" method="_on_pants_button_left_pressed"]
+[connection signal="color_changed" from="Character Editor/VBoxContainer/Pants/Pants Color" to="CharacterEditorManager" method="_on_pants_color_color_changed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Right" to="CharacterEditorManager" method="_on_pants_button_right_pressed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Save & Exit" to="CharacterEditorManager" method="_on_save__exit_pressed"]
+
+[editable path="Character Editor"]
+[editable path="CharacterEditorManager/CharacterCreationDemo"]
