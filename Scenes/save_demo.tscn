@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmfkbak2vbp3m"]
+
+[ext_resource type="PackedScene" uid="uid://qn6hdahfydp3" path="res://Scenes/Character.tscn" id="1_cpwrv"]
+[ext_resource type="Script" path="res://Scripts/save_demo.gd" id="1_qm3pp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7p81y"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_n242a"]
+sky_material = SubResource("ProceduralSkyMaterial_7p81y")
+
+[sub_resource type="Environment" id="Environment_luwyg"]
+background_mode = 2
+sky = SubResource("Sky_n242a")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="SaveDemo" type="Node3D"]
+script = ExtResource("1_qm3pp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_luwyg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.685818, -0.468776, 0.556689, 0, 0.764921, 0.644124, -0.727773, -0.441752, 0.524597, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.909961, -0.0748601, 0.40788, 0, 0.983571, 0.180519, -0.414693, -0.164265, 0.895012, 1.186, 1.242, 2.328)
+current = true
+
+[node name="Character" parent="." instance=ExtResource("1_cpwrv")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back to Character Editor"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

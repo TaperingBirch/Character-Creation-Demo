@@ -34,7 +34,7 @@ text = "ERROR"
 [node name="World" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 1.445)
+transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 2.445)
 current = true
 fov = 58.0
 
@@ -70,6 +70,7 @@ spot_angle = 14.2497
 script = ExtResource("2_ej6uk")
 
 [node name="CharacterCreationDemo" parent="CharacterEditorManager" instance=ExtResource("3_3maqc")]
+transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, 0)
 
 [connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Left" to="CharacterEditorManager" method="_on_body_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Body/Body Color" to="CharacterEditorManager" method="_on_body_color_color_changed"]

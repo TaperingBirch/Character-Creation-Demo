@@ -632,7 +632,7 @@ mesh = SubResource("ArrayMesh_tn8gi")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Hair02" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
+[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
 visible = false
 material_override = ExtResource("1_fhu4t")
 mesh = SubResource("ArrayMesh_f14y5")
@@ -655,7 +655,7 @@ mesh = SubResource("ArrayMesh_oqt5f")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
+[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
 visible = false
 material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_3wc3o")
@@ -677,7 +677,7 @@ mesh = SubResource("ArrayMesh_6dny7")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
+[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
 visible = false
 material_override = ExtResource("3_kh1f6")
 mesh = SubResource("ArrayMesh_63im4")

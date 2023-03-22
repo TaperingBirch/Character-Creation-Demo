@@ -1,12 +1,9 @@
-extends Node
+extends Node3D
 
-var character: Node3D
-
-var cosmetics_enabled: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	add_child(Global.character)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

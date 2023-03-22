@@ -55,6 +55,7 @@ horizontal_alignment = 1
 [node name="Body Color" type="ColorPickerButton" parent="VBoxContainer/Body"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+edit_alpha = false
 
 [node name="Body Button Right" type="Button" parent="VBoxContainer/Body"]
 custom_minimum_size = Vector2(40, 40)
@@ -87,6 +88,7 @@ horizontal_alignment = 1
 [node name="Hair Color" type="ColorPickerButton" parent="VBoxContainer/Hair"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+edit_alpha = false
 
 [node name="Hair Button Right" type="Button" parent="VBoxContainer/Hair"]
 custom_minimum_size = Vector2(40, 40)
@@ -120,6 +122,7 @@ horizontal_alignment = 1
 [node name="Pants Color" type="ColorPickerButton" parent="VBoxContainer/Pants"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+edit_alpha = false
 
 [node name="Pants Button Right" type="Button" parent="VBoxContainer/Pants"]
 custom_minimum_size = Vector2(40, 40)

@@ -24,6 +24,9 @@ var character_scene := "res://Scenes/Character.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for key in Global.cosmetics_enabled.keys():
+		enable_from_dict(skeleton, key)
+	
 	for n in body_parent.get_children():
 		for o in n.get_children():
 			if o.get_name() == pants_parent_name:
@@ -94,6 +97,7 @@ func _on_body_button_right_pressed():
 func _on_save__exit_pressed():
 	shrink(skeleton)
 	save()
+	get_tree().change_scene_to_file("res://Scenes/save_demo.tscn")
 
 
 
@@ -163,10 +167,34 @@ func shrink(parent:Node):
 	var roots := parent.get_children()
 	for i in roots:
 		if !i.visible:
-			print("{0} freed".format([i.get_name()]))
 			i.free()
-		elif i.get_children().size() > 0:
+		elif i.get_child_count() > 0:
 			shrink(i)
 
 func save():
-	pass
+	var cosmetic_items: Dictionary
+	character_node.get_parent().remove_child(character_node)
+	Global.character = character_node
+	
+	for body in body_parent.get_children():
+		cosmetic_items.Body = body.get_name()
+		for parent in body.get_children():
+			var dependent_type: String = parent.get_name()
+			for child in parent.get_children():
+				cosmetic_items[dependent_type] = child.get_name()
+	for hair in hair_parent.get_children():
+		cosmetic_items.Hair = hair.get_name()
+	Global.cosmetics_enabled = cosmetic_items
+
+func enable_from_dict(parent:Node, anchor:String):
+		for node in parent.get_children():
+			if node.get_name() == anchor:
+				for child in node.get_children():
+					if child.get_name() == Global.cosmetics_enabled[anchor]:
+						child.show()
+					else:
+						child.hide()
+			if node.get_child_count() > 0:
+				enable_from_dict(node, anchor)
+
+
