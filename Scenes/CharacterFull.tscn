@@ -496,7 +496,7 @@ _data = {
 }
 
 [node name="CharacterCreationDemo" type="Node3D"]
-transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, -1)
+transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, 0)
 
 [node name="metarig" type="Node3D" parent="."]
 
@@ -612,6 +612,7 @@ bones/15/rest = Transform3D(0.963808, 0.266564, 0.00423353, 0.264081, -0.956766,
 bones/15/enabled = true
 bones/15/position = Vector3(0.137288, -0.0954085, 0.00218391)
 bones/15/rotation = Quaternion(-0.958797, -0.00870154, -0.00329579, 0.28394)
+bones/15/rotation = Quaternion(-0.998113, -0.00922027, -0.00125134, 0.0607006)
 bones/15/scale = Vector3(1, 1, 1)
 bones/16/name = "thigh.R"
 bones/16/parent = 0
