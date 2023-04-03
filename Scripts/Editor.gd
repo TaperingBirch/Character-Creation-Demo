@@ -13,19 +13,16 @@ var hair_material: StandardMaterial3D = load("res://Resources/Materials/Hair_Mat
 var body_material: StandardMaterial3D = load("res://Resources/Materials/Body_Material.tres")
 
 # Pants-related variables
-@onready var pants_label: Label = $"../Character Editor/VBoxContainer/Pants/Label"
-@onready var pants_color_picker: ColorPickerButton = $"../Character Editor/VBoxContainer/Pants/Pants Color"
 var pants_parent_name: String = "Pants"
 var pants_parent_list: Array[Node]
+@onready var pants_label: Label = $"../Character Editor/VBoxContainer/Pants/Label"
+@onready var pants_color_picker: ColorPickerButton = $"../Character Editor/VBoxContainer/Pants/Pants Color"
 var pants_material: StandardMaterial3D = load("res://Resources/Materials/Pants_Material.tres")
 
 # Character nodes not related to any cosmetic item in particular
 @onready var skeleton: Skeleton3D = $CharacterCreationDemo/metarig/Skeleton3D
 @onready var character_node: Node3D = $CharacterCreationDemo
 var cosmetic_items: Dictionary = {} # {"Body": "Body02", "Hair": "Hair01", etc.}
-
-# Scene variables
-var character_scene := "res://Scenes/Character.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,7 +49,7 @@ func _ready():
 	# the scene opens
 	reset_edit_label(hair_label, hair_parent)
 	reset_edit_label(body_label, body_parent)
-	reset_edit_label_dependent(pants_label, body_parent, "Pants")
+	reset_edit_label_dependent(pants_label, body_parent, pants_parent_name)
 
 
 func _on_body_color_color_changed(color):
@@ -66,12 +63,10 @@ func _on_pants_color_color_changed(color):
 
 
 func _on_hair_button_left_pressed():
-	var hair_children := hair_parent.get_children()
-	iterate_item_left(hair_children, hair_label)
+	iterate_item_left(hair_parent.get_children(), hair_label)
 
 func _on_hair_button_right_pressed():
-	var hair_children := hair_parent.get_children()
-	iterate_item_right(hair_children, hair_label)
+	iterate_item_right(hair_parent.get_children(), hair_label)
 
 
 func _on_pants_button_left_pressed():
@@ -121,12 +116,12 @@ func reset_edit_label(label:Label, parent:Node):
 			break
 
 # This function is similar to reset_edit_label() in that it does the same thing,
-# except for cosmetics that rely on other cosmetics, like pants(which rely on
+# except for cosmetics that rely on other cosmetics, like pants(which relies on
 # body)
-func reset_edit_label_dependent(label:Label, grandparent:Node, category:String):
+func reset_edit_label_dependent(label:Label, independent_item_parent:Node, category:String):
 	# Searches for the first(which should also be only) visible child of
 	# grandparent
-	for n in grandparent.get_children():
+	for n in independent_item_parent.get_children():
 		if n.visible:
 			# Once found, it's children are searched for any node with the same
 			# name as category(eg. "Pants")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bb650s78ugikk"]
 
-[ext_resource type="PackedScene" path="res://Scenes/character_editor_UI.tscn" id="1_pe1jc"]
+[ext_resource type="PackedScene" uid="uid://bse2hwjiq45s2" path="res://Scenes/character_editor_UI.tscn" id="1_pe1jc"]
 [ext_resource type="Script" path="res://Scripts/Editor.gd" id="2_ej6uk"]
 [ext_resource type="PackedScene" uid="uid://c6y6xedm3h64i" path="res://Scenes/CharacterFull.tscn" id="3_3maqc"]
 
@@ -34,7 +34,7 @@ text = "ERROR"
 [node name="World" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(0.980955, 0.02938, -0.191999, 0, 0.988494, 0.151261, 0.194234, -0.14838, 0.969668, -1.364, 1.459, 2.445)
+transform = Transform3D(0.99824, 0.00897073, -0.058624, 0, 0.988494, 0.151261, 0.0593064, -0.150995, 0.986754, -1.364, 1.459, 2.445)
 current = true
 fov = 58.0
 
@@ -70,7 +70,16 @@ spot_angle = 14.2497
 script = ExtResource("2_ej6uk")
 
 [node name="CharacterCreationDemo" parent="CharacterEditorManager" instance=ExtResource("3_3maqc")]
-transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877, 0, 0, 0)
+
+[node name="Skeleton3D" parent="CharacterEditorManager/CharacterCreationDemo/metarig" index="0"]
+bones/1/rotation = Quaternion(0.0619456, 4.88326e-14, 1.4769e-08, 0.99808)
+bones/2/rotation = Quaternion(-0.0113192, -2.02976e-16, -2.6987e-09, 0.999936)
+bones/3/rotation = Quaternion(0.00162715, -1.19209e-07, 1.93971e-10, 0.999999)
+bones/4/rotation = Quaternion(0.201738, 1.16758e-07, 2.4049e-08, 0.97944)
+bones/6/rotation = Quaternion(-0.093712, -1.18685e-07, -1.11713e-08, 0.995599)
+bones/8/rotation = Quaternion(-0.075526, 0.784901, -0.125335, 0.602095)
+bones/10/rotation = Quaternion(-0.075526, -0.784901, 0.125335, 0.602095)
+bones/16/rotation = Quaternion(-0.998152, 0.00269705, 0.000777708, 0.0606991)
 
 [connection signal="pressed" from="Character Editor/VBoxContainer/Body/Body Button Left" to="CharacterEditorManager" method="_on_body_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Body/Body Color" to="CharacterEditorManager" method="_on_body_color_color_changed"]
