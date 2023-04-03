@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bb650s78ugikk"]
 
-[ext_resource type="PackedScene" uid="uid://dwnwk23a7iae5" path="res://Scenes/character_editor_UI.tscn" id="1_pe1jc"]
+[ext_resource type="PackedScene" path="res://Scenes/character_editor_UI.tscn" id="1_pe1jc"]
 [ext_resource type="Script" path="res://Scripts/Editor.gd" id="2_ej6uk"]
-[ext_resource type="PackedScene" uid="uid://b0ktewdsktla6" path="res://Scenes/CharacterFull.tscn" id="3_3maqc"]
+[ext_resource type="PackedScene" uid="uid://c6y6xedm3h64i" path="res://Scenes/CharacterFull.tscn" id="3_3maqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsgm8"]
 albedo_color = Color(0.121569, 0.133333, 0.141176, 1)
@@ -81,7 +81,7 @@ transform = Transform3D(0.0383877, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383877
 [connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Left" to="CharacterEditorManager" method="_on_pants_button_left_pressed"]
 [connection signal="color_changed" from="Character Editor/VBoxContainer/Pants/Pants Color" to="CharacterEditorManager" method="_on_pants_color_color_changed"]
 [connection signal="pressed" from="Character Editor/VBoxContainer/Pants/Pants Button Right" to="CharacterEditorManager" method="_on_pants_button_right_pressed"]
-[connection signal="pressed" from="Character Editor/VBoxContainer/Save & Exit" to="CharacterEditorManager" method="_on_save__exit_pressed"]
+[connection signal="pressed" from="Character Editor/VBoxContainer/Save & Exit" to="CharacterEditorManager" method="_on_save_exit_pressed"]
 
 [editable path="Character Editor"]
 [editable path="CharacterEditorManager/CharacterCreationDemo"]

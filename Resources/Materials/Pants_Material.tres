@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bijh4bumtinlk"]
+
+[resource]
+subsurf_scatter_transmittance_color = Color(0.423529, 0.356863, 0.498039, 1)
+subsurf_scatter_transmittance_depth = 8.0
+backlight = Color(1, 1, 1, 1)

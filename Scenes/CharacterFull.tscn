@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0ktewdsktla6"]
+[gd_scene load_steps=19 format=3 uid="uid://c6y6xedm3h64i"]
 
-[ext_resource type="Material" uid="uid://bo4jmjob5d3wq" path="res://Materials/Hair_Material.tres" id="1_fhu4t"]
-[ext_resource type="Material" uid="uid://dc4q7q8qqp2an" path="res://Materials/Body_Material.tres" id="2_eths0"]
-[ext_resource type="Material" uid="uid://bijh4bumtinlk" path="res://Materials/Pants_Material.tres" id="3_kh1f6"]
+[ext_resource type="Material" uid="uid://bo4jmjob5d3wq" path="res://Resources/Materials/Hair_Material.tres" id="1_uxpcu"]
+[ext_resource type="Material" uid="uid://dc4q7q8qqp2an" path="res://Resources/Materials/Body_Material.tres" id="2_vatsq"]
+[ext_resource type="Material" uid="uid://bijh4bumtinlk" path="res://Resources/Materials/Pants_Material.tres" id="3_qw3et"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwktx"]
 resource_name = "Material.001"
@@ -623,18 +623,18 @@ bones/16/scale = Vector3(0.999996, 1, 0.999999)
 
 [node name="Hair" type="Node3D" parent="metarig/Skeleton3D"]
 
-[node name="Hair00" type="Node3D" parent="metarig/Skeleton3D/Hair"]
+[node name="Hair01" type="Node3D" parent="metarig/Skeleton3D/Hair"]
 
-[node name="Hair01" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
+[node name="Hair02" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
 visible = false
-material_override = ExtResource("1_fhu4t")
+material_override = ExtResource("1_uxpcu")
 mesh = SubResource("ArrayMesh_tn8gi")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
 
-[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
+[node name="Hair03" type="MeshInstance3D" parent="metarig/Skeleton3D/Hair"]
 visible = false
-material_override = ExtResource("1_fhu4t")
+material_override = ExtResource("1_uxpcu")
 mesh = SubResource("ArrayMesh_f14y5")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
@@ -642,7 +642,7 @@ skeleton = NodePath("../..")
 [node name="Body" type="Node3D" parent="metarig/Skeleton3D"]
 
 [node name="Body01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body"]
-material_override = ExtResource("2_eths0")
+material_override = ExtResource("2_vatsq")
 mesh = SubResource("ArrayMesh_2ns0u")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
@@ -650,21 +650,21 @@ skeleton = NodePath("../..")
 [node name="Pants" type="Node3D" parent="metarig/Skeleton3D/Body/Body01"]
 
 [node name="Pants01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
-material_override = ExtResource("3_kh1f6")
+material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_oqt5f")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body01/Pants"]
 visible = false
-material_override = ExtResource("3_kh1f6")
+material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_3wc3o")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
 [node name="Body02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body"]
 visible = false
-material_override = ExtResource("2_eths0")
+material_override = ExtResource("2_vatsq")
 mesh = SubResource("ArrayMesh_q53jw")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../..")
@@ -672,14 +672,14 @@ skeleton = NodePath("../..")
 [node name="Pants" type="Node3D" parent="metarig/Skeleton3D/Body/Body02"]
 
 [node name="Pants01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
-material_override = ExtResource("3_kh1f6")
+material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_6dny7")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
-[node name="Rocker" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
+[node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
 visible = false
-material_override = ExtResource("3_kh1f6")
+material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_63im4")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")

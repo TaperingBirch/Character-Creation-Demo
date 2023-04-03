@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dc4q7q8qqp2an"]
+
+[resource]
+roughness = 0.75
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.73
+subsurf_scatter_skin_mode = true
