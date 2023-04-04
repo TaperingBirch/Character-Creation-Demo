@@ -672,13 +672,13 @@ skeleton = NodePath("../..")
 [node name="Pants" type="Node3D" parent="metarig/Skeleton3D/Body/Body02"]
 
 [node name="Pants01" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
+visible = false
 material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_6dny7")
 skin = SubResource("Skin_nyymf")
 skeleton = NodePath("../../../..")
 
 [node name="Pants02" type="MeshInstance3D" parent="metarig/Skeleton3D/Body/Body02/Pants"]
-visible = false
 material_override = ExtResource("3_qw3et")
 mesh = SubResource("ArrayMesh_63im4")
 skin = SubResource("Skin_nyymf")
